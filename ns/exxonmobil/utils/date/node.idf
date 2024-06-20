@@ -6,4 +6,18 @@
   <value name="node_nsName">exxonmobil.utils.date</value>
   <value name="node_pkg">ExxonDemo</value>
   <value name="is_public">false</value>
+  <value name="shared"></value>
+  <value name="encodeutf8">true</value>
+  <value name="extends"></value>
+  <array name="implements" type="value" depth="1">
+  </array>
+  <array name="imports" type="value" depth="1">
+    <value>java.math.BigDecimal</value>
+    <value>java.sql.Timestamp</value>
+    <value>java.text.DecimalFormat</value>
+    <value>java.text.ParseException</value>
+    <value>java.text.SimpleDateFormat</value>
+    <value>java.util.Date</value>
+    <value>java.util.Iterator</value>
+  </array>
 </Values>
