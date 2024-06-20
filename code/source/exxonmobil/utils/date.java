@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.time.LocalDate;
 import java.time.DayOfWeek;
+import java.time.LocalTime;
 // --- <<IS-END-IMPORTS>> ---
 
 public final class date
@@ -54,6 +55,36 @@ public final class date
         // Print the day of the week
     
 	
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
+	public static final void getPartOfDay (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(getPartOfDay)>> ---
+		// @sigtype java 3.5
+		// [o] field:0:required partOfDay
+		LocalTime currentTime = LocalTime.now();
+		
+		// Determine the part of the day
+		String partOfDay;
+		if (currentTime.isBefore(LocalTime.NOON)) {
+		    partOfDay = "Morning";
+		} else if (currentTime.isBefore(LocalTime.of(17, 0))) {
+		    partOfDay = "Afternoon";
+		} else {
+		    partOfDay = "Evening";
+		}
+		
+		// pipeline
+		IDataCursor pipelineCursor = pipeline.getCursor();
+		IDataUtil.put( pipelineCursor, "partOfDay", partOfDay );
+		pipelineCursor.destroy();
+			
 		// --- <<IS-END>> ---
 
                 

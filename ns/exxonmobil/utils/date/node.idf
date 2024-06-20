@@ -21,5 +21,6 @@
     <value>java.util.Iterator</value>
     <value>java.time.LocalDate</value>
     <value>java.time.DayOfWeek</value>
+    <value>java.time.LocalTime</value>
   </array>
 </Values>
