@@ -14,6 +14,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
+import java.time.LocalDate;
+import java.time.DayOfWeek;
 // --- <<IS-END-IMPORTS>> ---
 
 public final class date
@@ -32,46 +34,26 @@ public final class date
 
 
 
-	public static final void stringToDate (IData pipeline)
+	public static final void getDayOfWeek (IData pipeline)
         throws ServiceException
 	{
-		// --- <<IS-START(stringToDate)>> ---
+		// --- <<IS-START(getDayOfWeek)>> ---
 		// @sigtype java 3.5
-		// [i] field:0:required dateString
-		// [i] field:0:required dateFormat
-		// [o] object:0:required date
-		// Create a SimpleDateFormat object to parse the date
-		
-		
-		// pipeline
-		IDataCursor pipelineCursor = pipeline.getCursor();
-			String	dateString = IDataUtil.getString( pipelineCursor, "dateString" );
-			String	dateFormat = IDataUtil.getString( pipelineCursor, "dateFormat" );
-		
-		pipelineCursor.destroy();
-		
-		
-		SimpleDateFormat dateFormatObj = new SimpleDateFormat(dateFormat);
-		
-		try {
-		    // Parse the string to get a java.util.Date object
-		    Date utilDate = dateFormatObj.parse(dateString);
-		
-		    // Convert the java.util.Date to java.sql.Date
-		    //java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-		
-		    
-			// pipeline
-			IDataCursor pipelineCursor_1 = pipeline.getCursor();
-			IDataUtil.put( pipelineCursor_1, "date", utilDate );
-			pipelineCursor_1.destroy();
-		
-		} catch (Exception e) {
-		    // Handle parsing errors, if any
-		    throw new ServiceException(e);
-		}
-			
-			
+		// [o] field:0:required dayOfWeek
+    // Get the current date
+        LocalDate currentDate = LocalDate.now();
+
+        // Get the day of the week
+        DayOfWeek dayOfWeek = currentDate.getDayOfWeek();
+
+        IDataCursor pipelineCursor = pipeline.getCursor();
+        IDataUtil.put( pipelineCursor, "dayOfWeek", dayOfWeek.toString());
+        pipelineCursor.destroy();
+
+
+        // Print the day of the week
+    
+	
 		// --- <<IS-END>> ---
 
                 

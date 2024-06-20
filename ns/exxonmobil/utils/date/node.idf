@@ -19,5 +19,7 @@
     <value>java.text.SimpleDateFormat</value>
     <value>java.util.Date</value>
     <value>java.util.Iterator</value>
+    <value>java.time.LocalDate</value>
+    <value>java.time.DayOfWeek</value>
   </array>
 </Values>
